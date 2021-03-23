@@ -1,0 +1,227 @@
+<% layout('layout/boilerplate') -%>
+  <link rel="stylesheet" href="/stylesheets/ReviewStarsRating.css">
+
+  <div class="row">
+    <div class="col-6">
+      <div id="carouselCamps" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <% campground.images.forEach((img,i)=>{ %>
+            <button type="button" data-bs-target="#carouselCamps" data-bs-slide-to="<%= i %> "
+              class="<%=i ===0 ? 'active': '' %>" aria-current="true" aria-label="Slide 1"></button>
+            <% }) %>
+        </div>
+        <div class="carousel-inner">
+          <% if (campground.images.length <1) {%>
+            <div class="carousel-item active">
+              <img class="carousel-image" src="/images/default-image.jpg" alt="carousel-items">
+            </div>
+            <%}else { %>
+              <%campground.images.forEach((img,i)=> { %>
+                <div class="carousel-item <%= i ===0 ? 'active': '' %>">
+                  <img class="carousel-image" src="<%= img.url %> " alt="...">
+                </div>
+                <% }) %>
+                  <% } %>
+
+        </div>
+        <% if (campground.images.length>1){ %>
+          <a class="carousel-control-prev" type="button" data-bs-target="#carouselCamps" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden"></span>
+          </a>
+          <a class="carousel-control-next" type="button" data-bs-target="#carouselCamps" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden"></span>
+          </a>
+          <% } %>
+      </div>
+
+
+
+
+
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">
+            <%=campground.title%>
+          </h5>
+          <p class="card-text">
+            <%=campground.description%>
+          </p>
+
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item text-muted">
+              <%=campground.location%>
+            </li>
+            <li class="list-group-item">
+              Submited by: <%=campground.author.username%>
+            </li>
+            <li class="list-group-item">
+              $ <%=campground.price%>
+                <span><b class="text-muted">/</b> Night</span>
+            </li>
+          </ul>
+          <% if (currentUser && campground.author.equals(currentUser)) {%>
+            <div class="card-body">
+              <a href="/campgrounds/<%= campground._id %>/edit" class="btn btn-info">Edit</a>
+              <form class="d-inline" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
+                <button class="btn btn-danger">Delete</button>
+              </form>
+            </div>
+            <% } %>
+              <div class="card-body">
+                <form action="/campgrounds">
+                  <button class="btn btn-primary">All Camps</button>
+                </form>
+              </div>
+
+        </div>
+      </div>
+
+
+    </div>
+
+
+    <!-- POSTiNG REVIEW AND SHOWING STATIC REVIEWS COLUMN -->
+    <div class="col-6">
+      <div class="mb-3" id='map'></div>
+      <!-- POSTING A NEW REVIEW -->
+      <% if (currentUser){ %>
+        <div class="mb-3">
+          <form method="POST" <%if (editStatus==='True' ){%>
+            action="/campgrounds/<%= campground._id %>/reviews/<%= reviewToEdit._id %>?_method=PATCH"<%}else {%>
+                  action="/campgrounds/<%= campground._id %>/reviews" novalidate class="validated-form" <% } %> >
+                      <div>
+                        <h3>Please Rate US!</h3>
+                        <fieldset class="starability-basic">
+                          <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="0" checked
+                            aria-label="No rating." />
+                          <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                          <label for="first-rate1" title="Terrible">1 star</label>
+                          <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                          <label for="first-rate2" title="Not good">2 stars</label>
+                          <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                          <label for="first-rate3" title="Average">3 stars</label>
+                          <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                          <label for="first-rate4" title="Very good">4 stars</label>
+                          <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                          <label for="first-rate5" title="Amazing">5 stars</label>
+                        </fieldset>
+                      </div>
+
+                      <!-- <label for="review" class="form-label"></label> -->
+                      <% if (editStatus==='True' ) {%>
+                        <textarea class="form-control mb-3" name="review[body]" id="review" cols="30" rows="3"
+                          placeholder="Leave a Review.." required><%= reviewToEdit.body %></textarea>
+                        <button class="btn btn-success">Save</button>
+                        <a class="btn btn-danger" href="/campgrounds/<%= campground._id %>">Cancel</a>
+                        <% }else { %>
+                          <textarea class="form-control mb-3" name="review[body]" id="review" cols="30" rows="3"
+                            placeholder="Leave a Review.." required></textarea>
+                          <button class="btn btn-success">Submit</button>
+                          <% } %>
+          </form>
+
+        </div>
+        <% } %>
+          <!-- END OF POSTING NEW REVIW -->
+
+          <!-- SHOWING ALL VISITOR STATIC REVIEWS -->
+
+
+          <%if(reviews && reviews.length) { %>
+
+            <h5>Reviews</h5>
+            <% for (let review of reviews){ %>
+              <!-- START OF THE COMPLETE REVIEW CARD -->
+              <div class="card mb-3 d-flex flex-column">
+                <div class="d-flex flex-row align-items-center card-body pb-0">
+
+                  <!-- USER IMAGE PROFILE -->
+                  <div class="col-1 mr-3 pb-3">
+                    <img class="rounded-circle" width="50" height="
+                  50" src="https://images.unsplash.com/photo-1593642532009-6ba71e22f468?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                      alt="">
+                  </div>
+                  <!-- END USER IMAGE PROFILE -->
+
+                  <!-- USERNAME -------DELETE REVIEW FORM--------STATIC STAR RATING -->
+                  <div class="col-11">
+                    <div class="d-flex flex-row justify-content-between pr-2">
+                      <h5 class="card-title">
+                        <%= review.reviewAuthor.username %>
+                      </h5>
+                      <%if (currentUser && review.reviewAuthor.equals(currentUser._id)){ %>
+                        <div class="d-flex flex-row">
+
+                          <form method="GET" action="/campgrounds/<%= campground._id %>/reviews/<%= review._id %>/edit">
+                            <input type="hidden" name="editStatus" value="True">
+                            <button class="btn btn-transparent p-0 m-0"><span style="color:grey"><i
+                                  class="fa fa-edit grey p-0 mr-2" aria-hidden="true"></i></span>
+                            </button>
+                          </form>
+                          <form method="POST"
+                            action="/campgrounds/<%= campground._id %>/reviews/<%= review._id %>?_method=DELETE">
+                            <button class="btn btn-transparent p-0 m-0"><span style="color:grey"><i
+                                  class="fa fa-trash grey p-0 m-0" aria-hidden="true"></i></span>
+                            </button>
+                          </form>
+                        </div>
+
+                        <%} %>
+                    </div>
+                    <!-- STATIC STAR RATING -->
+                    <div class="d-flex flex-row justify-content-between pr-2">
+                      <p class="starability-result" data-rating="<%= review.rating %>">
+                        Rated: <%= review.rating %> stars
+                      </p>
+                    </div>
+                  </div>
+                  <!-- END OF --------------------USERNAME -------DELETE REVIEW FORM--------STATIC STAR RATING -->
+                </div>
+                <!--  REVIW TEXT BODY -->
+                <div class="d-flex flex-row align-items-center card-body pt-0">
+                  <div class="col-1">
+                    <!--  EMPTY COLUMN   -->
+                  </div>
+                  <div class="col-11">
+                    <div class="card-body py-0">
+                      <p class="card-text">
+                        <%= review.body %>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- END REVIW TEXT BODY -->
+              </div>
+              <!--  END STATIC REVIEW COMPLETE CARD -->
+              <% } %>
+                <% if (!currentUser){ %>
+                  <div class="card">
+                    <div class="card_title p-2">
+                      You need to <a href="/login">Sign in</a> to to add a review!
+                    </div>
+                  </div>
+                  <% } %>
+                    <% } else if (!reviews.length && !currentUser) {%>
+                      <div class="card">
+                        <div class="card_title p-2">
+                          There is currently no reviews! You need to <a href="/login">Sign in</a> to to add a review!
+                        </div>
+                      </div>
+                      <% }%>
+
+
+    </div>
+    <!-- END OF POSTiNG REVIEW AND SHOWING STATIC REVIEWS COLUMN -->
+  </div>
+
+
+  <!-- <script>SCRIPTS</script> -->
+  <script>
+    // TO MAKE THE MAP APPEAR YOU MUST
+    // ADD YOUR ACCESS TOKEN FROM MAPBOX ACCOUNT  
+    const mapToken = '<%-process.env.MAPBOX_TOKEN %>';
+    const campground = JSON.parse('<%-JSON.stringify(campground)%>')
+  </script>
+  <script src="/javascripts/mapScript.js"></script>

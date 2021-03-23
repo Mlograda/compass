@@ -1,0 +1,228 @@
+/*HOME PAGE STYLING CSS*/
+
+body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(https://images.unsplash.com/photo-1475483768296-6163e08872a1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80);
+
+    background-size    : cover;
+    background-position: center;
+    font-size          : 14px;
+    line-height        : 1.5em;
+    font-family        : Helvetica Neue, Helvetica, Arial, sans-serif;
+    color              : #fff;
+    z-index            : -1;
+}
+
+h3,
+h4,
+h5 {
+    font-weight: 600;
+    font-size  : 16px;
+}
+
+.HomeContainer {
+    margin-right: auto;
+    margin-left : auto;
+    display     : flex inline-block;
+
+    width : 70%;
+    height: 100vh;
+}
+
+.HomeNavBar {
+    padding-top    : 2rem;
+    display        : flex;
+    flex-direction : row;
+    justify-content: space-between;
+
+}
+
+
+
+ul {
+    list-style  : none;
+    padding-left: 0;
+}
+
+.header-nav {
+    /* display       : flex;
+    flex-direction: column; */
+    display: inline-block;
+}
+
+.header-nav_item {
+    display     : inline-block;
+    margin-right: 10px;
+}
+
+.header-nav_link {
+    display: inline-block;
+    color  : #fff;
+    display: block;
+    padding: 9px 12px 10px;
+
+    line-height    : 1.5em;
+    font           : inherit;
+    font-weight    : 700;
+    font-size      : 16px;
+    background     : none;
+    border-radius  : 0;
+    border-bottom  : 2px solid transparent;
+    padding-bottom : 8px;
+    text-decoration: none;
+}
+
+
+.header-nav_link:hover {
+    color              : #fff;
+    text-decoration    : none;
+    border-bottom-color: #fff;
+}
+
+
+.header-nav_button {
+    background   : transparent;
+    box-shadow   : none;
+    border-radius: 4px;
+    border       : 2px solid #fff;
+    margin-top   : -2px;
+    padding      : 7px 24px 8px;
+}
+
+.header-nav_button:hover {
+    text-decoration : none;
+    background-color: white;
+    color           : #333;
+    transition      : 0.25s ease-in;
+}
+
+/*Home Content*/
+
+.HomeContent {
+    height     : 50%;
+    padding-top: 80px;
+
+    display        : flex;
+    flex-direction : column;
+    align-items    : center;
+    justify-content: space-evenly;
+}
+
+.HomeLogo {
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+    line-height    : 2rem;
+    width          : 100%;
+    height         : 50%;
+    margin-bottom  : 10px;
+    font-size      : 16px;
+    font-weight    : 600;
+}
+
+.HomeLogo .Logo {
+    width : 100%;
+    height: 100%;
+}
+
+div {
+    margin        : 0;
+    padding       : 0;
+    border        : 0;
+    font-size     : 100%;
+    font          : inherit;
+    vertical-align: baseline;
+}
+
+.HomeSearch {
+    width: 95%;
+}
+
+.input-group-text {
+    color           : #fff;
+    background-color: transparent;
+    font-weight     : 600;
+    font-size       : 1rem;
+}
+
+.SearchIcon {
+    background-color          : #be2020;
+    display                   : flex;
+    align-items               : center;
+    border                    : 1px solid transparent !important;
+    border-top-right-radius   : 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+}
+
+.SearchButton {
+    color           : transparent;
+    border          : none;
+    background-color: transparent;
+}
+
+i.fas {
+    /* padding         : 0.5rem 0.7rem; */
+    font-size       : 1.5rem;
+    background-color: #be2020;
+    color           : white;
+}
+
+.form-control {
+    background-color: rgba(255, 255, 255, 0.3);
+
+}
+
+.form-control::placeholder {
+    font-weight: 500;
+    color      : white;
+
+}
+
+.form-control:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    font-weight: 500;
+    color      : white;
+}
+
+.form-control::-ms-input-placeholder {
+    /* Microsoft Edge */
+    font-weight: 500;
+    color      : white;
+}
+
+.HomeFooter {
+    background-color: transparent;
+
+    width        : 70%;
+    margin-top   : auto;
+    margin-left  : auto;
+    margin-right : auto;
+    margin-bottom: 1rem;
+
+    font-weight    : 500;
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+    align-items    : center;
+}
+
+.main-footer {
+    width          : 100%;
+    display        : flex;
+    flex-direction : row;
+    justify-content: space-evenly;
+}
+
+.main-footer-list-link {
+    text-decoration: none;
+    color          : #fff;
+    font-size      : 14px;
+
+}
+
+.main-footer-list-link:hover {
+    color: #8b8a8a;
+}
+
+.footer-sticker {
+    margin-top: 0.5rem;
+}

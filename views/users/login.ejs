@@ -1,0 +1,43 @@
+<%- layout('layout/boilerplate') %>
+
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h3 class="card-title">Sign in</h3>
+                        <form action="/login" method="POST" novalidate class="validated-form">
+                            <div class="my-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="string" name="checking" class="form-control" id="email"
+                                    aria-describedby="email" placeholder="Enter Email.." autofocus required />
+                                <div class="invalid-feedback">Please enter a valid email.</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <div class="input-group mb-3">
+
+                                    <input type="password" name="password" class="form-control" id="password"
+                                        aria-describedby="password" placeholder="Enter Password.." required />
+
+                                    <div class="invalid-feedback">Please enter a password.</div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <button class="btn btn-success btn-block">Connect</button>
+                            </div>
+                        </form>
+                        <div class="text-center">
+                            <a href="/reset">Forgot your Password ?</a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
