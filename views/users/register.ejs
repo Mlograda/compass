@@ -1,0 +1,65 @@
+<%- layout('layout/boilerplate') %>
+    <div class="container justify-content-center align-items-center">
+
+    </div>
+    <div class="row">
+        <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h3 class="card-title">Create an account!</h3>
+                    <hr>
+                    <form action="/register" method="POST" novalidate class="validated-form">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <% if(!registerUser.username){ %>
+                                <input type="text" name="username" class="form-control" id="username"
+                                    aria-describedby="username" placeholder="Enter Username.." required autofocus />
+                                <% }else {%>
+                                    <input type="text" name="username" class="form-control" id="username"
+                                        value="<%= registerUser.username%> " aria-describedby="username"
+                                        placeholder="Enter Username.." required />
+                                    <% } %>
+                                        <div class="valid-feedback"></div>
+                                        <div class="invalid-feedback">Please choose a valid username.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" name="email" class="form-control" id="email" aria-describedby="email"
+                                placeholder="Enter Email.." required />
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback">Please choose a location.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <div class="input-group mb-3">
+
+                                <input type="password" name="password" class="form-control" id="password"
+                                    aria-describedby="password" placeholder="Enter Password.." required />
+                                <div class="valid-feedback"></div>
+                                <div class="invalid-feedback">Please enter a password.</div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="repeatPassword" class="form-label">Confirm Password</label>
+                            <div class="input-group mb-3">
+
+                                <input type="password" name="repeatPassword" class="form-control" id="repeatPassword"
+                                    aria-describedby="repeatPassword" placeholder="Enter Password.." required />
+                                <div class="valid-feedback"></div>
+                                <div class="invalid-feedback">Please enter a password.</div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-success btn-block">Register</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+    </div>

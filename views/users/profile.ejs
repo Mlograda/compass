@@ -1,0 +1,74 @@
+<%- layout('layout/boilerplate') %>
+    <!-- update information  -->
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+
+                <div class="card shadow ">
+                    <div class="card-body">
+                        <form action="/profile/<%= user._id %>?_method=PATCH" neme="myform" method="POST"
+                            class="ProfileForm">
+                            <div class="profile-picture-container mt-3">
+                                <div class="profile-picture-box">
+
+                                    <img class="profile-picture rounded-circle" width="200"
+                                        src="/images/profile-picture.png" alt="">
+
+                                    <label class="edit-label" for="user-profil-picture"><i class="fa fa-edit p-2"
+                                            style="color: grey;" aria-hidden="true"></i></label>
+                                    <input type="file" class="form-file-input" id="user-profil-picture"
+                                        name="user[image]" style="display: none; visibility: none;">
+
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" name="username" class="form-control" id="username"
+                                    value="<%= user.username%>" aria-describedby="username" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="text" name="email" class="form-control" id="email" value="<%= user.email%>"
+                                    aria-describedby="email" placeholder="Enter email.." required />
+                            </div>
+                            <div class="mb-3">
+                                <button class="btn btn-success btn-block SaveChanges">Save Changes</button>
+
+                            </div>
+                            <div class="mb-3">
+                                <a class="btn btn-secondary btn-block" href="/campgrounds">Abort Changes</a>
+                            </div>
+                            <div class="mb-3">
+                                <div class="text-center">
+                                    <a href="/reset">Change Password</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        document.querySelector('.ProfileForm').onsubmit = function() {
+            return valideForm();
+        }
+
+        function valideForm() {
+
+            if (confirm('You are about to change your credentials, would like to continue?')) {
+                this.form.submit();
+            } else {
+                return false
+            }
+        }
+
+    </script>

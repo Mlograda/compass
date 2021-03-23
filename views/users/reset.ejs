@@ -1,0 +1,33 @@
+<%- layout('layout/boilerplate') %>
+
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="row">
+
+            <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h3 class="card-title">Password Reset</h3>
+                        <hr>
+                        <form action="/reset" method="POST" novalidate class="validated-form">
+                            <div class="mb-3">
+                                <p>Please enter your email address! An email will be sent to your inbox to reset your
+                                    password.</p>
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" name="email" class="form-control" id="email"
+                                    aria-describedby="email" placeholder="Enter Email.." required autofocus />
+                                <div class="invalid-feedback">Please Enter a valid Email.</div>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <a class="btn btn-secondary px-4" href="/login">Cancel</a>
+                                <button class="btn btn-success ml-2 px-4">Send</button>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>

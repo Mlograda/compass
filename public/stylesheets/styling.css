@@ -1,0 +1,164 @@
+/* .container {
+    margin      : 0;
+    padding-left: 2rem;
+} */
+
+body {
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size  : 1rem;
+    font-weight: 500;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-weight: 600;
+}
+
+.carousel-item {
+    height: 300px;
+}
+
+.carousel-indicators [data-bs-target] {
+    box-sizing      : content-box;
+    flex            : 0 1 auto;
+    width           : 30px;
+    height          : 3px;
+    padding         : 0;
+    margin-right    : 3px;
+    margin-left     : 3px;
+    text-indent     : -999px;
+    cursor          : pointer;
+    background-color: #fff;
+    background-clip : padding-box;
+    border          : 0;
+    border-top      : 10px solid transparent;
+    border-bottom   : 10px solid transparent;
+    opacity         : .5;
+    transition      : opacity .6s ease;
+}
+
+.carousel-indicators .active {
+    opacity: 1;
+}
+
+.carousel-image {
+    display: block;
+    width  : 100%;
+    height : 100%;
+}
+
+
+
+#cluster-map {
+    width        : 100%;
+    height       : 500px;
+    margin-bottom: 2rem;
+}
+
+#map {
+    width : 100%;
+    height: 300px;
+}
+
+.popup-title {
+    text-decoration: none;
+    text-align     : center;
+    line-height    : 1.5;
+    font-weight    : 700;
+    color          : #fff;
+}
+
+.popup-title:hover {
+    color: #cacaca;
+}
+
+.Customize-popup .mapboxgl-popup-content {
+    background-color   : rgba(0, 0, 0, 0.6);
+    /* height          : 160px; */
+}
+
+.campground-items {
+    padding: 24px;
+    margin : 0;
+}
+
+.campground-index-image {
+    width : 200px;
+    height: 200px;
+}
+
+.campground-image {
+    border-radius : 4px;
+    vertical-align: middle;
+    box-sizing    : border-box;
+    width         : 100%;
+    height        : 100%;
+
+}
+
+/*START OF VIEWS/CAMPGROUNDS EDIT.EJS COMPONENT STYLINNG */
+.delete {
+    display : inline;
+    position: relative;
+    height  : 100px;
+    width   : 100px;
+}
+
+img {
+    vertical-align: bottom;
+}
+
+.img-thumbnail {
+
+    width : 200px;
+    height: 200px;
+}
+
+.checkbox {
+
+    position: absolute;
+    bottom  : 0;
+    left    : 0;
+}
+
+/*END OF VIEWS/CAMPGROUNDS EDIT.EJS COMPONENT STYLINNG */
+
+/* START OF VIEWS/USERS PROFILE.EJS PICTURE STYLING */
+.profile-picture-container {
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    position       : relative;
+    /* height      : 250px;
+    width          : 250px; */
+}
+
+.profile-picture-box {
+    display  : inline;
+    position : relative;
+    /* height: 250px;
+    width    : 250px; */
+}
+
+.profile-picture {
+    vertical-align: bottom;
+    width         : 200px;
+    height        : 200px;
+}
+
+.edit-label {
+    position  : absolute;
+    visibility: hidden;
+    top       : 0%;
+    right     : 0%;
+}
+
+.profile-picture-box:hover .edit-label {
+    visibility: visible;
+    cursor    : pointer;
+}
+
+/* END OF VIEWS/USERS PROFILE.EJS PICTURE STYLING */

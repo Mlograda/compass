@@ -1,0 +1,51 @@
+<% layout('layout/boilerplate') -%>
+
+    <div id="cluster-map"></div>
+
+    <h1>ALL CAMPS</h1>
+
+    <% for (let campground of campgrounds){%>
+
+        <div class="card mb-2">
+            <div class="row campground-items">
+                <!-- src="/images/default-image.jpg" -->
+                <div class="col-md-4 campground-index-image">
+                    <% if (campground.images.length<1){ %>
+                        <img class="img-fluid"
+                            src="https://res.cloudinary.com/dq6oml6je/image/upload/v1616335871/YelpCamp/gfhtrvvuumwxeffz9q68.jpg"
+                            alt="<%= campground.title %>-image" />
+                        <% } else{ %>
+                            <img class="img-fluid campground-image" src="<%= campground.images[0].thumbnail %>"
+                                alt="<%= campground.title %>-images" />
+                            <% } %>
+                </div>
+
+                <div class="col-md-8">
+                    <h5 class="card-title">
+                        <%= campground.title %>
+                    </h5>
+                    <p class="card-text">
+                        <%= campground.description %>
+                    </p>
+                    <p class="card-text">
+                        <small class="text-muted">
+                            <%= campground.location %>
+                        </small>
+                    </p>
+                    <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">
+                        <%= campground.title %>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <% } %>
+            <a class="btn btn-primary mt-3" href="/campgrounds/new">Add New Camp</a>
+
+            <script>
+                // TO MAKE THE MAP APPEAR YOU MUST
+                // ADD YOUR ACCESS TOKEN FROM MAPBOX ACCOUNT
+                const mapToken = '<%-process.env.MAPBOX_TOKEN %>';
+                const campgrounds = { features: JSON.parse('<%-JSON.stringify(campgrounds)%>') }
+            </script>
+            <script src="/javascripts/clusterMap.js"></script>
