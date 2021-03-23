@@ -95,7 +95,7 @@ exports.postReset = async (req, res, next) => {
     user.resetTokenExpiration = Date.now() + 60 * 60 * 1000;
     await user.save();
 
-    const resetURL = 'https://dry-hamlet-22477.herokuapp.com' || 'http://localhost:3000/'
+    const resetURL = 'https://compass-ml.herokuapp.com' || 'http://localhost:3000/'
     req.flash('success', `An email, to reset your password, has been sent to ${req.body.email}, please check in!`)
     res.redirect('/login')
     transporter.sendMail({
