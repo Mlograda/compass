@@ -1,0 +1,81 @@
+<div class="left">
+    <ul class="header-nav">
+        <li><a class="header-nav_link" href="/campgrounds">Discover</a></li>
+    </ul>
+</div>
+<div class="right">
+    <ul class="header-nav">
+        <% if (!currentUser){ %>
+            <li class="header-nav_item"><a class="header-nav_link" href="/login">Sign in</a></li>
+            <li class="header-nav_item"><a class="header-nav_link header-nav_button" href="/register">Sign
+                    up</a>
+            </li>
+            <% }else { %>
+                <li class="header-nav_item"><a class="header-nav_link" href="/logout">Sign out</a></li>
+                <% } %>
+    </ul>
+</div>
+</div>
+<div class="HomeContent">
+    <div class="HomeLogo">
+        <!-- <img class="Logo" src="https://logodownload.org/wp-content/uploads/2017/10/starbucks-logo-4.png" alt=""> -->
+        <p class="text-center">Welcome to Compass<br>Discover your next adventure with us!</p>
+
+    </div>
+
+    <div class="HomeSearch">
+        <form method="POST" action="/search">
+            <div class="input-group mb-3">
+                <span class="input-group-text">Find</span>
+                <input type="text" name="campground" class="form-control" placeholder="Campground.."
+                    aria-label="Username">
+                <span class="input-group-text">Near</span>
+                <input type="text" name="location" class="form-control" placeholder="Location.." aria-label="Server">
+
+                <span class="input-group-text SearchIcon"><button class="SearchButton"><i
+                            class="fas fa-search"></i></button></span>
+
+            </div>
+        </form>
+
+    </div>
+</div>
+
+</div>
+<div class="HomeFooter">
+    <div class="main-footer">
+        <div>
+            <h3>About</h3>
+            <ul>
+                <li class="main-footer-list-item"><a class="main-footer-list-link" href="/about/compass">Compass</a>
+                </li>
+                <li class="main-footer-list-item"><a class="main-footer-list-link"
+                        href="/about/development">Development</a></li>
+
+            </ul>
+        </div>
+        <div>
+            <h3>Discover</h3>
+            <ul>
+                <li class="main-footer-list-item"><a class="main-footer-list-link" href="/campgrounds">Camping</a>
+                </li>
+
+            </ul>
+        </div>
+
+    </div>
+    <div class="footer-sticker">
+        <span>Copyright &copy; 2020-2021 Compass </span>
+    </div>
+
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+    integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

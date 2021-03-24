@@ -153,7 +153,7 @@ exports.postNewPassword = async (req, res, next) => {
             from: 'nozama.tr@gmail.com',
             subject: 'Password Changed',
             html: `<p>Dear ${user.username}</p>
-            <p>You are receving this email, because you have recently updated your password on your yelcamp account</p>`
+            <p>You are receving this email, because you have recently updated your password on your compass account</p>`
         })
         res.redirect('/campgrounds')
     })
